@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .block{
+        width: 250px;
+        height: 400px;
+    background-color: burlywood;
+    text-align: center;
+    float: left;
+    margin-left: 20px;
+    margin-top:20px ;
+    }
+
+.block img{
+    width: 100%;
+    width: 250px;
+}
+.cart{
+    width: 120px;
+    height: 120px;
+    float: right;
+    margin-top: 20px;
+    margin-right: 100px;
+}
+.cartdiv{
+width: 300px;
+background-color: aliceblue;
+float: right;
+margin-top: 150px;
+margin-right: -200px;
+text-align: center;
+display: none;
+}
+
+.pro1cart , .pro2cart , .pro3cart{
+    width: 100%;
+    height: 200px;
+    background-color: brown;
+}
+
+.right{
+    width: 50%;
+    height: 100%;
+    float: right;
+}
+
+.right img{
+    width: 100%;
+    height: 100%;
+}
+
+.left{
+    width: 50%;
+    height: 100%;
+    float: left;
+    background-color: cornflowerblue;
+}
+
+</style>
+<body>
+    <div>
+        <img class="cart" src="987.jpg">
+        <div class="cartdiv">
+        <hr>
+        <h2>
+        total : <span class="total">0</span>
+        </h2>
+        <a href="طلب.html">ارسال طلب من فضلك ارسل اسم المنتج و طرق للتواصل</a>
+    </div>
+    <a href="اا.html">بث مباشر</a>
+   
+
+    <div class="block pro1">
+        <img src="mjk.jpg">
+        <h2>nike</h2>
+        <p><span>100</span>$</p>
+        <button>buy</button>
+    </div>
+
+    <div class="block pro2">
+        <img src="mjk.jpg">
+        <h2>nike</h2>
+        <p><span>100</span>$</p>
+        <button>buy</button>
+    </div>
+
+    <div class="block pro3">
+        <img src="mjk.jpg">
+        <h2>nike</h2>
+       <p><span>100</span>$</p>
+        <button>buy</button>
+    </div> 
+
+
+    <script src="jquery-3.7.1.js"></script>
+    <script>    
+        $(document).ready(function(){
+    $(".cart").click(function(){
+        $(".cartdiv").slideToggle(1000)
+    })
+    $(".pro1 button").click(function(){
+        var pro1_price = Number($(".pro1 span").text());
+        var total = Number( $(".cartdiv .total").text());
+       
+        console.log(total)
+        var pro1count = Number($(".pro1count").text());
+        if(!pro1count){
+    $(".cartdiv").prepend(`
+        <div class="pro1cart">
+         <div class="right">
+        <img src="mjk.jpg">
+    </div>
+
+    <div class="left">
+        <h2>nike</h2>
+        <h3>price : <span>100</span></h3>
+        <h3>count : <span class="pro1count">1</span></h3>
+        <button class="del">Del</button>
+          
+    </div>
+  `)
+  $(".cartdiv .total").text(pro1_price+total);
+    }else{
+        $(".pro1count").text(pro1count+1)
+        $(".cartdiv .total").text(pro1_price+total);
+    }
+})
+$(".cartdiv").on("click" , ".pro1cart .del" ,function(){
+  
+
+    var pro1_count = Number($(".pro1count").text());
+    var total = Number( $(".cartdiv .total").text());
+    var pro1_price = Number($(".pro1 span").text());
+    if(pro1_count > 1){
+
+ $(".pro1count").text(pro1_count - 1);
+ $(".cartdiv .total").text(total - pro1_price);
+    }else{
+        $(".pro1cart").remove();
+        $(".cartdiv .total").text(total - pro1_price);
+    }
+})
+    })
+
+
+
+    
+    $(".pro2 button").click(function(){
+        var pro2_price = Number($(".pro2 span").text());
+        var total = Number( $(".cartdiv .total").text());
+        var pro2count = Number($(".pro2count").text());
+if(!pro2count){
+    $(".cartdiv").prepend(`
+    <div class="pro2cart">
+
+    
+    <div class="right">
+<img src="mjk.jpg">
+    </div>
+
+    <div class="left">
+        <h2>gh</h2>
+        <h3>price : <span>200</span></h3>
+        <h3>count : <span class="pro2count">1</span></h3>
+        <button class="del">Del</button>
+            </div>
+        </div>
+  `)
+  $(".cartdiv .total").text(pro2_price+total);
+    }else{
+        $(".pro2count").text( pro2count+1)
+        $(".cartdiv .total").text(pro2_price+total);
+    }
+})
+$(".cartdiv").on("click" , ".pro2cart .del" ,function(){
+  
+
+    var pro2_count = Number($(".pro2count").text());
+    var total = Number( $(".cartdiv .total").text());
+    var pro2_price = Number($(".pro2 span").text());
+    if(pro2_count > 1){
+
+ $(".pro2count").text(pro2_count - 1);
+ $(".cartdiv .total").text(total - pro2_price);
+    }else{
+        $(".pro2cart").remove();
+        $(".cartdiv .total").text(total - pro2_price);
+    }
+})
+
+
+
+
+
+
+
+$(".pro3 button").click(function(){
+    var pro3_price = Number($(".pro3 span").text());
+    var total = Number( $(".cartdiv .total").text());
+    var pro3count = Number($(".pro3count").text());
+if(!pro3count){
+$(".cartdiv").prepend(`
+<div class="pro3cart">
+
+
+<div class="right">
+<img src="mjk.jpg">
+</div>
+
+<div class="left">
+    <h2>ne</h2>
+    <h3>price : <span>100</span></h3>
+    <h3>count : <span class="pro3count">1</span></h3>
+    <button class="del">Del</button>
+        </div>
+    </div>
+`)
+$(".cartdiv .total").text(pro3_price+total);
+}else{
+    $(".pro3count").text( pro3count+1)
+    $(".cartdiv .total").text(pro3_price+total);
+}
+})
+$(".cartdiv").on("click" , ".pro3cart .del" ,function(){
+
+
+var pro3_count = Number($(".pro3count").text());
+var total = Number( $(".cartdiv .total").text());
+var pro3_price = Number($(".pro3 span").text());
+if(pro3_count > 1){
+
+$(".pro3count").text(pro3_count - 1);
+$(".cartdiv .total").text(total - pro3_price);
+}else{
+    $(".pro3cart").remove();
+    $(".cartdiv .total").text(total - pro3_price);
+}
+})
+
+
+
+
+
+
+                    </script>
+
+
+                    
+</body>
+</html>
